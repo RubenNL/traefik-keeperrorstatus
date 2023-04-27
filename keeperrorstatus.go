@@ -1,3 +1,4 @@
+// my package :)
 package keeperrorstatus
 
 import (
@@ -8,16 +9,19 @@ import (
 	"text/template"
 )
 
+// config
 type Config struct {
 	Header string `test`
 }
 
+// create config
 func CreateConfig() *Config {
 	return &Config{
 		Header: "TEMPLATEHEADER",
 	}
 }
 
+// type thing?
 type Keeperrorstatus struct {
 	next     http.Handler
 	header   string
@@ -25,6 +29,7 @@ type Keeperrorstatus struct {
 	template *template.Template
 }
 
+// new function
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
 	if config.Header == "TEMPLATEHEADER" {
 		return nil, fmt.Errorf("header needs to be set!")
@@ -38,6 +43,7 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 	}, nil
 }
 
+// serveHttp function
 func (a *Keeperrorstatus) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	header := req.Header.Get("test")
 	if header != "" {
