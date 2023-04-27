@@ -1,4 +1,4 @@
-// my package.
+// Package keeperrorstatus is my package.
 package keeperrorstatus
 
 import (
@@ -14,7 +14,7 @@ type Config struct {
 	Header string `json:"header,omitempty"`
 }
 
-// createConfig function.
+// CreateConfig function.
 func CreateConfig() *Config {
 	return &Config{
 		Header: "TEMPLATEHEADER",
@@ -32,7 +32,7 @@ type Keeperrorstatus struct {
 // New function.
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
 	if config.Header == "TEMPLATEHEADER" {
-		return nil, fmt.Errorf("Header needs to be set!")
+		return nil, fmt.Errorf("Header needs to be set")
 	}
 
 	return &Keeperrorstatus{
