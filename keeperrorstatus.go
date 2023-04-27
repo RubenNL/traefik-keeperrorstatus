@@ -9,19 +9,19 @@ import (
 	"text/template"
 )
 
-// config.
+// Config is my config.
 type Config struct {
 	Header string `json:"header,omitempty"`
 }
 
-// create config.
+// createConfig function.
 func CreateConfig() *Config {
 	return &Config{
 		Header: "TEMPLATEHEADER",
 	}
 }
 
-// type thing.
+// Keeperrorstatus type.
 type Keeperrorstatus struct {
 	next     http.Handler
 	header   string
@@ -29,7 +29,7 @@ type Keeperrorstatus struct {
 	template *template.Template
 }
 
-// new function.
+// New function.
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
 	if config.Header == "TEMPLATEHEADER" {
 		return nil, fmt.Errorf("Header needs to be set!")
@@ -43,7 +43,7 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 	}, nil
 }
 
-// serveHttp function.
+// ServeHTTP function.
 func (a *Keeperrorstatus) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 	header := req.Header.Get("test")
 	if header != "" {
