@@ -1,12 +1,10 @@
-displayName: Demo Plugin
+displayName: Keeperrorstatus
 type: middleware
 iconPath: .assets/icon.png
 
-import: github.com/traefik/plugindemo
+import: github.com/rubennl/traefik-keeperrorstatus
 
-summary: '[Demo] Add Request Header'
+summary: 'Keeperrorstatus'
 
 testData:
-  Headers:
-    X-Demo: test
-    X-URL: '{{URL}}'
+  Header: 'demoheader'
