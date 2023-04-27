@@ -32,7 +32,7 @@ type Keeperrorstatus struct {
 // New function.
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
 	if config.Header == "TEMPLATEHEADER" {
-		return nil, fmt.Errorf("Header needs to be set")
+		return nil, fmt.Errorf("header needs to be set")
 	}
 
 	return &Keeperrorstatus{
