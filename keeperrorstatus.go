@@ -3,7 +3,6 @@ package keeperrorstatus
 
 import (
 	"context"
-	"fmt"
 	"net/http"
 	"strconv"
 	"text/template"
@@ -31,15 +30,15 @@ type Keeperrorstatus struct {
 
 // New function.
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
-	if config.Header == "TEMPLATEHEADER" {
-		return nil, fmt.Errorf("header needs to be set")
-	}
+	//if config.Header == "TEMPLATEHEADER" {
+	//return nil, fmt.Errorf("header needs to be set")
+	//}
 
 	return &Keeperrorstatus{
 		header:   config.Header,
 		next:     next,
 		name:     name,
-		template: template.New("Keeperrorstatus").Delims("[[", "]]"),
+		template: template.New("deeperrorstatus").Delims("[[", "]]"),
 	}, nil
 }
 
